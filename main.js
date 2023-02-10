@@ -3,6 +3,13 @@ const addRecommendationBtn = document.querySelector('#addRecommendation');
 const newRecommendationInput = document.querySelector('#newRecommendation');
 const recommendationsList = document.querySelector('.recommendations');
 
+const likeButtons = document.querySelectorAll('.like-button');
+likeButtons.forEach((likeButton) => {
+  likeButton.addEventListener('click', (e) => {
+    likeButton.classList.toggle('liked');
+  });
+});
+
 // Get the list of recommendations from local storage
 const getRecommendationsFromStorage = () => {
   // Get the string representation of the recommendations from local storage
@@ -73,7 +80,7 @@ const renderRecommendations = recommendations => {
 
       // Remove the recommendation from local storage
       removeRecommendationFromStorage(recommendation);
-    });
+    });    
 
     // Add the text, image, and button to the list item
     recommendationNode.appendChild(recommendationText);
